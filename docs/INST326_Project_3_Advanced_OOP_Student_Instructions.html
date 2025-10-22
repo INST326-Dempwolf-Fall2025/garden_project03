@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INST326 Project 3: Advanced OOP with Inheritance & Polymorphism</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #830a0a;
+            border-bottom: 3px solid #830a0a;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #830a0a;
+            margin-top: 30px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+        h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+        h4 {
+            color: #555;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #830a0a;
+            overflow-x: auto;
+        }
+        pre code {
+            background-color: transparent;
+            padding: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #830a0a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning-box {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .highlight {
+            background-color: #fff59d;
+            padding: 2px 4px;
+        }
+        blockquote {
+            border-left: 4px solid #830a0a;
+            margin: 20px 0;
+            padding-left: 20px;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>INST326 Project 3: Advanced OOP with Inheritance &amp; Polymorphism</h1>
+<p><strong>Assigned:</strong> Week 7 (October 27)<br />
+<strong>Due:</strong> Week 10 (November 23) at 11:59 PM<br />
+<strong>Points:</strong> 65 (6.5% of final grade)<br />
+<strong>Team Size:</strong> 3-4 students  </p>
+<h2>Project Overview</h2>
+<p>Extend your existing system (Projects 1 &amp; 2) by implementing inheritance hierarchies, polymorphic behavior, and composition relationships. This project demonstrates how advanced OOP principles enable code reuse, flexibility, and scalable architecture.</p>
+<p><strong>Key Goal:</strong> Transform your collection of independent classes into a sophisticated object-oriented system with meaningful inheritance relationships and polymorphic behavior.</p>
+<h2>Technical Requirements</h2>
+<h3>1. Inheritance Hierarchy (Required)</h3>
+<p>Create at least one inheritance hierarchy with:
+- <strong>Base class</strong> (may be abstract) defining common interface
+- <strong>2-3 derived classes</strong> that specialize the base class
+- <strong>Method overriding</strong> with appropriate use of <code>super()</code>
+- <strong>Logical relationships</strong> that reflect your domain</p>
+<h3>2. Abstract Base Classes (Required)</h3>
+<p>Implement at least one abstract base class using Python's <code>abc</code> module:</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AbstractItem</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for all library items.&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate_loan_period</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Must be implemented by subclasses.&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+</code></pre></div>
+
+<h3>3. Polymorphism (Required)</h3>
+<p>Demonstrate polymorphic behavior where:
+- Same method call produces different behavior based on object type
+- Code works with base class references but calls derived class methods
+- System handles multiple object types uniformly</p>
+<h3>4. Composition (Required)</h3>
+<p>Show at least one composition relationship:
+- One class contains instances of other classes
+- Demonstrate "has-a" relationships
+- Explain why composition was chosen over inheritance</p>
+<h2>Domain-Specific Examples</h2>
+<h3>🏛️ Digital Archive Management</h3>
+<p><strong>Inheritance:</strong> <code>AbstractDocument</code> → <code>Manuscript</code>, <code>Photograph</code>, <code>AudioRecording</code><br />
+<strong>Polymorphism:</strong> Each document type calculates preservation requirements differently<br />
+<strong>Composition:</strong> <code>Collection</code> contains multiple <code>Document</code> objects</p>
+<h3>📚 Library Management</h3>
+<p><strong>Inheritance:</strong> <code>LibraryItem</code> → <code>Book</code>, <code>Journal</code>, <code>DVD</code>, <code>EBook</code><br />
+<strong>Polymorphism:</strong> Each item type calculates loan periods and fines differently<br />
+<strong>Composition:</strong> <code>Catalog</code> contains <code>LibraryItem</code> objects, <code>Loan</code> links <code>Member</code> and <code>LibraryItem</code></p>
+<h3>🔬 Research Data Management</h3>
+<p><strong>Inheritance:</strong> <code>AbstractExperiment</code> → <code>LabExperiment</code>, <code>FieldStudy</code>, <code>Survey</code><br />
+<strong>Polymorphism:</strong> Each experiment type validates and processes data differently<br />
+<strong>Composition:</strong> <code>ResearchProject</code> contains multiple <code>Experiment</code> and <code>Dataset</code> objects</p>
+<h3>📄 Information Retrieval</h3>
+<p><strong>Inheritance:</strong> <code>AbstractSource</code> → <code>WebSource</code>, <code>DatabaseSource</code>, <code>FileSource</code><br />
+<strong>Polymorphism:</strong> Each source type fetches and processes data differently<br />
+<strong>Composition:</strong> <code>SearchEngine</code> contains multiple <code>Source</code> objects and <code>Query</code> history</p>
+<h2>Deliverables</h2>
+<h3>1. Enhanced Codebase</h3>
+<ul>
+<li>All Project 2 classes refactored with inheritance/polymorphism</li>
+<li>New abstract base classes</li>
+<li>Derived classes with specialized behavior</li>
+<li>Composition relationships implemented</li>
+</ul>
+<h3>2. Updated Tests</h3>
+<ul>
+<li>Test suite covering inherited methods</li>
+<li>Tests for polymorphic behavior</li>
+<li>Tests for abstract class enforcement</li>
+<li>Tests for composition relationships</li>
+</ul>
+<h3>3. Documentation</h3>
+<p><strong>Architecture Document</strong> explaining:
+- Inheritance hierarchies and rationale
+- Why specific methods are polymorphic
+- Composition vs. inheritance decisions
+- Design pattern usage</p>
+<p><strong>Updated README</strong> with:
+- New class hierarchies diagram
+- Polymorphism examples
+- Usage examples showing inheritance benefits</p>
+<h2>Assessment Criteria</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Points</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inheritance Design</strong></td>
+<td>20</td>
+<td>Logical hierarchies, proper use of base/derived classes</td>
+</tr>
+<tr>
+<td><strong>Polymorphism</strong></td>
+<td>15</td>
+<td>Effective method overriding, dynamic behavior</td>
+</tr>
+<tr>
+<td><strong>Abstract Classes</strong></td>
+<td>10</td>
+<td>Proper ABC usage, interface enforcement</td>
+</tr>
+<tr>
+<td><strong>Composition</strong></td>
+<td>10</td>
+<td>Appropriate "has-a" relationships</td>
+</tr>
+<tr>
+<td><strong>Code Quality</strong></td>
+<td>5</td>
+<td>Clean code, documentation, style</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>5</td>
+<td>Comprehensive test coverage</td>
+</tr>
+</tbody>
+</table>
+<h2>GitHub Requirements</h2>
+<h3>Repository Structure</h3>
+<div class="codehilite"><pre><span></span><code><span class="nx">your</span><span class="o">-</span><span class="nx">team</span><span class="o">-</span><span class="nx">repo</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">src</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="kd">base</span><span class="o">/</span><span class="w">              </span><span class="err">#</span><span class="w"> </span><span class="nx">Abstract</span><span class="w"> </span><span class="kd">base</span><span class="w"> </span><span class="nx">classes</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">models</span><span class="o">/</span><span class="w">            </span><span class="err">#</span><span class="w"> </span><span class="nx">Concrete</span><span class="w"> </span><span class="nx">implementations</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">managers</span><span class="o">/</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="nx">Composition</span><span class="w"> </span><span class="nx">classes</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">tests</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">test_inheritance</span><span class="p">.</span><span class="nx">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">test_polymorphism</span><span class="p">.</span><span class="nx">py</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">test_composition</span><span class="p">.</span><span class="nx">py</span>
+<span class="err">├──</span><span class="w"> </span><span class="nx">docs</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="nx">architecture</span><span class="p">.</span><span class="nx">md</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="nx">Design</span><span class="w"> </span><span class="nx">decisions</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="nx">class_diagram</span><span class="p">.</span><span class="nx">png</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="nx">Visual</span><span class="w"> </span><span class="nx">hierarchy</span>
+<span class="err">└──</span><span class="w"> </span><span class="nx">README</span><span class="p">.</span><span class="nx">md</span>
+</code></pre></div>
+
+<h3>Version Control</h3>
+<ul>
+<li>Feature branches for each inheritance hierarchy</li>
+<li>Pull requests with design rationale</li>
+<li>Code review focusing on OOP principles</li>
+</ul>
+<h2>Common Pitfalls to Avoid</h2>
+<p>❌ <strong>Inheritance for the sake of it</strong> - Only use inheritance when there's a true "is-a" relationship<br />
+❌ <strong>Deep hierarchies</strong> - Keep inheritance 2-3 levels maximum<br />
+❌ <strong>Missing <code>super()</code> calls</strong> - Always call parent constructors when appropriate<br />
+❌ <strong>Composition as afterthought</strong> - Plan which relationships should be composition vs. inheritance<br />
+❌ <strong>No polymorphism</strong> - Ensure derived classes actually override methods meaningfully</p>
+<h2>Success Checklist</h2>
+<p>Before submission, verify:</p>
+<ul>
+<li>[ ] At least one inheritance hierarchy with base + 2-3 derived classes</li>
+<li>[ ] Abstract base class(es) using ABC module</li>
+<li>[ ] Polymorphic methods that behave differently per class</li>
+<li>[ ] At least one composition relationship</li>
+<li>[ ] All classes have comprehensive docstrings</li>
+<li>[ ] Test suite covers inheritance, polymorphism, composition</li>
+<li>[ ] Architecture document explains design decisions</li>
+<li>[ ] README updated with class hierarchies</li>
+<li>[ ] All team members contributed via GitHub</li>
+<li>[ ] Code review completed for all major components</li>
+</ul>
+<h2>AI Collaboration</h2>
+<p><strong>Appropriate AI Usage:</strong>
+- Generate boilerplate for abstract base classes
+- Suggest inheritance hierarchies for your domain
+- Help refactor existing code into hierarchies
+- Explain when to use inheritance vs. composition</p>
+<p><strong>Your Responsibility:</strong>
+- Design meaningful class relationships
+- Validate that inheritance makes domain sense
+- Ensure polymorphism serves a real purpose
+- Document architectural decisions in your own words</p>
+<h2>Questions?</h2>
+<ul>
+<li><strong>Technical issues:</strong> TA office hours</li>
+<li><strong>Design decisions:</strong> Lab sessions with TAs</li>
+<li><strong>Team conflicts:</strong> Contact Professor Dempwolf</li>
+<li><strong>GitHub problems:</strong> Course Slack channel</li>
+</ul>
+<p><strong>Remember:</strong> Good OOP design models real-world relationships naturally. If your inheritance hierarchy feels forced, it probably is—consider composition instead!</p>
+    </div>
+</body>
+</html>
